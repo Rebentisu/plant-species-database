@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A botanical database of plant species relevant to ecological restoration on Milos Island, Greece.">
+  <title>Plant Species Database – Milos Restoration</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Original RURBANIVE blob navigation -->
+  <div id="menu">
+    <button class="hamburger" type="button" aria-label="Open navigation menu" aria-controls="menuLinks" aria-expanded="false">
+      <span class="line"></span><span class="line"></span><span class="line"></span>
+    </button>
+    <div class="menu-inner">
+      <div class="brand">
+        <a href="https://rurbanive-project.eu/" target="_blank" rel="noopener noreferrer" aria-label="Visit the RURBANIVE project website">
+          <img class="brand-logo"
+               src="https://zenodo.org/records/18361008/files/RURBANIVE_stroke.png?download=1"
+               alt="RURBANIVE – Rural Urban Immersiveness" loading="eager">
+        </a>
+      </div>
+      <ul id="menuLinks">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/plant-database.html" aria-current="page">Plant Database</a></li>
+        <li><a href="/restoration-protocols.html">Restoration Protocols</a></li>
+        <li><a href="/legislation.html">Legislation</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </div>
+    <svg id="blob" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 1000" preserveAspectRatio="none" aria-hidden="true">
+      <path id="blob-path" d=""></path>
+    </svg>
+  </div>
+
+  <main class="page">
+    <header class="page-header">
+      <div class="header-left">
+        <h1>Plant Species Database</h1>
+        <p>A collection of plant species applied in ecological restoration on Milos Island following quarrying activities,
+        aimed at rehabilitating degraded landscapes and supporting ecosystem recovery. The database primarily includes
+        indigenous species adapted to local conditions; some of these species are also edible, highlighting their cultural
+        and practical value.</p>
+      </div>
+      <div class="header-right">
+        <div class="controls" role="search">
+          <input id="searchInput" type="search" placeholder="Search by scientific name, Greek name, or family…"
+                 aria-label="Search plants" autocomplete="off">
+          <div class="button-row">
+            <button id="edibleBtn" type="button" aria-pressed="false">🍽️ Edible</button>
+            <button id="beeBtn" type="button" aria-pressed="false">🐝 Bee plants</button>
+            <button id="randomBtn" type="button">🎲 Random</button>
+            <button id="clearBtn" type="button">✖ Clear</button>
+          </div>
+        </div>
+        <div id="statusLine" class="status-line" role="status" aria-live="polite"></div>
+      </div>
+    </header>
+
+    <section id="plantGrid" aria-label="Plant cards"></section>
+    <footer class="database-footer">
+      <span>RURBANIVE · Milos ecosystem and biodiversity restoration</span>
+      <a href="https://doi.org/10.5281/zenodo.23456678" target="_blank" rel="noopener noreferrer">Photographic dataset (Zenodo)</a>
+    </footer>
+  </main>
+
+  <!-- Plant details open on the same page; no plant.html is required. -->
+  <dialog id="plantDialog" class="plant-dialog" aria-label="Plant species information">
+    <button class="dialog-close" id="closePlantDialog" type="button" aria-label="Close plant details">×</button>
+    <div id="plantDialogContent"></div>
+  </dialog>
+
+  <!-- Separate lightbox works for plant photos, AMF, and root nodules. -->
+  <dialog id="photoLightbox" class="photo-lightbox" aria-label="Expanded photograph">
+    <button class="lightbox-close" id="closePhotoLightbox" type="button" aria-label="Close enlarged photograph">×</button>
+    <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" type="button" aria-label="Previous photograph">‹</button>
+    <figure class="lightbox-figure">
+      <img id="lightboxImage" alt="">
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+    <button class="lightbox-arrow lightbox-next" id="lightboxNext" type="button" aria-label="Next photograph">›</button>
+  </dialog>
+  <script src="script.js" defer></script>
+</body>
+</html>
